@@ -1,0 +1,152 @@
+.menu-hover-item {
+  display: none;
+  position: absolute;
+}
+
+.menu-hover:hover + .menu-hover-item {
+  display: block;
+}
+
+.dropdown-button {
+  background-color: #fff;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+}
+
+/* .dropdown-content a {
+  text-decoration: none;
+  display: block;
+} */
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropdown-button {
+  background-color: #ffffff;
+}
+
+.vertical-menu {
+  width: 200px;
+}
+
+.vertical-menu a {
+  background-color: #eee;
+  color: black;
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.vertical-menu a:hover {
+  background-color: #ccc;
+}
+
+.search {
+  position: relative;
+}
+
+.search input {
+  text-indent: 25px;
+  border: 2px solid #ccc;
+}
+
+.search .fa-search {
+  position: absolute;
+  top: 35%;
+  left: 8%;
+}
+
+.checkin {
+  position: relative;
+}
+
+.checkin input {
+  /* height: 60px; */
+  text-indent: 25px;
+  border: 2px solid #ccc;
+}
+
+.checkin .fa-calendar-alt {
+  position: absolute;
+  top: 35%;
+  left: 8%;
+}
+.fa-calendar-alt {
+  color: #4db;
+}
+.btn-search {
+  background-color: #f92;
+  color: #fff;
+}
+.btn-search:hover {
+  background-color: rgba(211, 122, 21, 0.815);
+  color: #fff;
+}
+.btn-filter {
+  background-color: #357;
+  color: #fff;
+}
+.btn-filter:hover {
+  background-color: rgba(70, 123, 175, 0.904);
+  color: #fff;
+}
+
+.vacation-rentals {
+  color: #f83;
+}
+.label-card-text {
+  color: rgb(39, 179, 167);
+}
+.fa-star,
+.fa-star-half {
+  color: #248;
+}
+.btn-view-more {
+  background-color: #f83;
+  color: #fff;
+}
+.btn-view-more:hover {
+  background-color: rgba(250, 147, 73, 0.788);
+  color: #fff;
+}
+.img-2 {
+  width: 25px;
+  padding-left: 10px;
+  padding-bottom: 3px;
+}
+.heart-1,
+.more-photo {
+  border: none;
+}
+.heart-1 {
+  float: right;
+  opacity: 55%;
+  background-color: black;
+  color: #fff;
+}
+.more-photo {
+  float: right;
+  opacity: 80%;
+}
+.cash-1 {
+  float: left;
+  opacity: 80%;
+}
+.heart-cash {
+  padding-top: 45%;
+}

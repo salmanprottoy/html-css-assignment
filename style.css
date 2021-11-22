@@ -130,23 +130,46 @@
   padding-bottom: 3px;
 }
 .heart-1,
-.more-photo {
+.more-photo,
+.cash-1 {
   border: none;
 }
+
 .heart-1 {
-  float: right;
   opacity: 55%;
   background-color: black;
   color: #fff;
 }
 .more-photo {
-  float: right;
   opacity: 80%;
 }
 .cash-1 {
-  float: left;
+  padding-top: 25%;
   opacity: 80%;
 }
 .heart-cash {
   padding-top: 45%;
+}
+
+.container-img {
+  position: relative;
+}
+
+.top-right {
+  position: absolute;
+  opacity: 80%;
+  top: 5%;
+  right: 20px;
+}
+.bottom-right {
+  position: absolute;
+  opacity: 80%;
+  top: 80%;
+  right: 20px;
+}
+.bottom-left {
+  position: absolute;
+  opacity: 80%;
+  top: 80%;
+  left: 20px;
 }

@@ -70,6 +70,24 @@
   top: 35%;
   left: 8%;
 }
+.checkinCheckout {
+  position: relative;
+}
+
+.checkinCheckout input {
+  /* height: 60px; */
+  text-indent: 25px;
+  border: 2px solid #ccc;
+}
+
+.checkinCheckout .fa-calendar-alt {
+  position: absolute;
+  top: 35%;
+  left: 8%;
+}
+.fa-calendar-alt {
+  color: #4db;
+}
 
 /* 
 .checkin {

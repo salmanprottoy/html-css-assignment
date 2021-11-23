@@ -39,32 +39,13 @@
       rel="stylesheet"
       href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css"
     />
-    <link rel="stylesheet" href="/resources/demos/style.css" />
-
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-    <script>
-      
-      $(function () {
-        var $dp1 = $("#datepicker-checkin");
-        $dp1.datepicker({
-          minDate: new Date(),
-          format: "yyyy-mm-dd",
-          autoclose: true,
-          minViewMode: 1,
-          clearBtn: true,
-          enableOnReadonly: true,
-        });
-
-        console.log(document.getElementById("datepicker-chekin"));
-
-        var $dp2 = $("#datepicker-checkout");
-        $dp2.datepicker({
-          minDate: $("#datepicker-checkin").data("date"),
-          format: "yyyy-mm-dd",
-        });
-      });
-    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/hotel-datepicker@4.0.2/dist/css/hotel-datepicker.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/fecha@4.2.1/lib/fecha.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hotel-datepicker@4.0.2/dist/js/hotel-datepicker.min.js"></script>
+    <script type="text/javascript" src="./script.js"></script>
 
     <title>BedroomVillas</title>
   </head>
@@ -87,7 +68,7 @@
 
         <a class="navbar-brand menu-hover" href="#"
           ><img
-            src="bedroomvillas-logo.png"
+            src="https://i.ibb.co/ysZR388/bedroomvillas-logo.png"
             alt="bedroomvillas"
             class="img-fluid p-1"
         /></a>
@@ -101,21 +82,13 @@
           />
         </div>
 
-        <div class="checkin p-1">
+        <div class="checkinCheckout p-1">
+          <i class="far fa-calendar-alt"></i>
           <input
             type="text"
-            class="rounded-0"
-            id="datepicker-checkin"
-            placeholder="Check In"
-          />
-        </div>
-
-        <div class="checkout p-1">
-          <input
-            type="text"
-            class="rounded-0"
-            id="datepicker-checkout"
-            placeholder="Check Out"
+            class="form-control rounded-0"
+            id="input-id"
+            placeholder="Check In > Check Out"
           />
         </div>
 
@@ -184,7 +157,11 @@
         <div class="col-md-4">
           <div class="card">
             <div class="container-img">
-              <img src="./hotel-1.jpg" class="card-img-top" alt="..." />
+              <img
+                src="https://i.ibb.co/pncmT7r/hotel-1.jpg"
+                class="card-img-top"
+                alt="..."
+              />
               <div class="top-right">
                 <button class="rounded p-1 more-photo">
                   More photo
@@ -240,7 +217,11 @@
         <div class="col-md-4">
           <div class="card">
             <div class="container-img">
-              <img src="./hotel-2.jpg" class="card-img-top" alt="..." />
+              <img
+                src="https://i.ibb.co/jrHGfth/hotel-2.jpg"
+                class="card-img-top"
+                alt="..."
+              />
               <div class="top-right">
                 <button class="rounded p-1 more-photo">
                   More photo
@@ -296,178 +277,11 @@
         <div class="col-md-4">
           <div class="card">
             <div class="container-img">
-              <img src="./hotel-3.jpg" class="card-img-top" alt="..." />
-              <div class="top-right">
-                <button class="rounded p-1 more-photo">
-                  More photo
-                  <img
-                    src="https://cdn-assets.bedroomvillas.com/vff/1.1.18-v2/images/external-link.svg"
-                    alt=""
-                    class="img-fluid img-2"
-                  />
-                </button>
-              </div>
-              <div class="bottom-left">
-                <button class="rounded p-1 cash-1">From ৳ 15000</button>
-              </div>
-              <div class="bottom-right">
-                <button class="rounded p-1 btn btn-sm btn btn-sm heart-1">
-                  <i class="far fa-heart"></i>
-                </button>
-              </div>
-            </div>
-
-            <div class="card-body">
-              <h5>Lorem ipsum dolor sit amet consectetur.</h5>
-              <div class="row">
-                <div class="col-md-8">
-                  <p>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                    &nbsp;&nbsp; 635 Reviews <br />
-                    Sleeps 87 <br />
-                    <span class="label-card-text"
-                      >Arizona > Lake Havasu City</span
-                    >
-                  </p>
-                </div>
-                <div class="col-md-4">
-                  <button type="button" class="w-auto btn btn-view-more">
-                    View Details
-                  </button>
-                </div>
-              </div>
-              <p class="card-text">
-                <i class="fal fa-check"></i>
-                Air Conditionar &nbsp;&nbsp;
-                <i class="fal fa-check"></i>
-                Child Friendly
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row m-1 g-3 p-1">
-        <div class="col-md-4">
-          <div class="card">
-            <div class="container-img">
-              <img src="./hotel-4.jpg" class="card-img-top" alt="..." />
-              <div class="top-right">
-                <button class="rounded p-1 more-photo">
-                  More photo
-                  <img
-                    src="https://cdn-assets.bedroomvillas.com/vff/1.1.18-v2/images/external-link.svg"
-                    alt=""
-                    class="img-fluid img-2"
-                  />
-                </button>
-              </div>
-              <div class="bottom-left">
-                <button class="rounded p-1 cash-1">From ৳ 15000</button>
-              </div>
-              <div class="bottom-right">
-                <button class="rounded p-1 btn btn-sm btn btn-sm heart-1">
-                  <i class="far fa-heart"></i>
-                </button>
-              </div>
-            </div>
-
-            <div class="card-body">
-              <h5>Lorem ipsum dolor sit amet consectetur.</h5>
-              <div class="row">
-                <div class="col-md-8">
-                  <p>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                    &nbsp;&nbsp; 635 Reviews <br />
-                    Sleeps 87 <br />
-                    <span class="label-card-text"
-                      >Arizona > Lake Havasu City</span
-                    >
-                  </p>
-                </div>
-                <div class="col-md-4">
-                  <button type="button" class="w-auto btn btn-view-more">
-                    View Details
-                  </button>
-                </div>
-              </div>
-              <p class="card-text">
-                <i class="fal fa-check"></i>
-                Air Conditionar &nbsp;&nbsp;
-                <i class="fal fa-check"></i>
-                Child Friendly
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <div class="container-img">
-              <img src="./hotel-5.jpg" class="card-img-top" alt="..." />
-              <div class="top-right">
-                <button class="rounded p-1 more-photo">
-                  More photo
-                  <img
-                    src="https://cdn-assets.bedroomvillas.com/vff/1.1.18-v2/images/external-link.svg"
-                    alt=""
-                    class="img-fluid img-2"
-                  />
-                </button>
-              </div>
-              <div class="bottom-left">
-                <button class="rounded p-1 cash-1">From ৳ 15000</button>
-              </div>
-              <div class="bottom-right">
-                <button class="rounded p-1 btn btn-sm btn btn-sm heart-1">
-                  <i class="far fa-heart"></i>
-                </button>
-              </div>
-            </div>
-
-            <div class="card-body">
-              <h5>Lorem ipsum dolor sit amet consectetur.</h5>
-              <div class="row">
-                <div class="col-md-8">
-                  <p>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                    &nbsp;&nbsp; 635 Reviews <br />
-                    Sleeps 87 <br />
-                    <span class="label-card-text"
-                      >Arizona > Lake Havasu City</span
-                    >
-                  </p>
-                </div>
-                <div class="col-md-4">
-                  <button type="button" class="w-auto btn btn-view-more">
-                    View Details
-                  </button>
-                </div>
-              </div>
-              <p class="card-text">
-                <i class="fal fa-check"></i>
-                Air Conditionar &nbsp;&nbsp;
-                <i class="fal fa-check"></i>
-                Child Friendly
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <div class="container-img">
-              <img src="./hotel-1.jpg" class="card-img-top" alt="..." />
+              <img
+                src="https://i.ibb.co/WWNpHYF/hotel-3.jpg"
+                class="card-img-top"
+                alt="..."
+              />
               <div class="top-right">
                 <button class="rounded p-1 more-photo">
                   More photo
@@ -526,7 +340,11 @@
         <div class="col-md-4">
           <div class="card">
             <div class="container-img">
-              <img src="./hotel-2.jpg" class="card-img-top" alt="..." />
+              <img
+                src="https://i.ibb.co/68XMzbQ/hotel-4.jpg"
+                class="card-img-top"
+                alt="..."
+              />
               <div class="top-right">
                 <button class="rounded p-1 more-photo">
                   More photo
@@ -582,7 +400,11 @@
         <div class="col-md-4">
           <div class="card">
             <div class="container-img">
-              <img src="./hotel-3.jpg" class="card-img-top" alt="..." />
+              <img
+                src="https://i.ibb.co/fYVGXPt/hotel-5.jpg"
+                class="card-img-top"
+                alt="..."
+              />
               <div class="top-right">
                 <button class="rounded p-1 more-photo">
                   More photo
@@ -638,7 +460,194 @@
         <div class="col-md-4">
           <div class="card">
             <div class="container-img">
-              <img src="./hotel-4.jpg" class="card-img-top" alt="..." />
+              <img
+                src="https://i.ibb.co/pncmT7r/hotel-1.jpg"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="top-right">
+                <button class="rounded p-1 more-photo">
+                  More photo
+                  <img
+                    src="https://cdn-assets.bedroomvillas.com/vff/1.1.18-v2/images/external-link.svg"
+                    alt=""
+                    class="img-fluid img-2"
+                  />
+                </button>
+              </div>
+              <div class="bottom-left">
+                <button class="rounded p-1 cash-1">From ৳ 15000</button>
+              </div>
+              <div class="bottom-right">
+                <button class="rounded p-1 btn btn-sm btn btn-sm heart-1">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <h5>Lorem ipsum dolor sit amet consectetur.</h5>
+              <div class="row">
+                <div class="col-md-8">
+                  <p>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    &nbsp;&nbsp; 635 Reviews <br />
+                    Sleeps 87 <br />
+                    <span class="label-card-text"
+                      >Arizona > Lake Havasu City</span
+                    >
+                  </p>
+                </div>
+                <div class="col-md-4">
+                  <button type="button" class="w-auto btn btn-view-more">
+                    View Details
+                  </button>
+                </div>
+              </div>
+              <p class="card-text">
+                <i class="fal fa-check"></i>
+                Air Conditionar &nbsp;&nbsp;
+                <i class="fal fa-check"></i>
+                Child Friendly
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row m-1 g-3 p-1">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="container-img">
+              <img
+                src="https://i.ibb.co/jrHGfth/hotel-2.jpg"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="top-right">
+                <button class="rounded p-1 more-photo">
+                  More photo
+                  <img
+                    src="https://cdn-assets.bedroomvillas.com/vff/1.1.18-v2/images/external-link.svg"
+                    alt=""
+                    class="img-fluid img-2"
+                  />
+                </button>
+              </div>
+              <div class="bottom-left">
+                <button class="rounded p-1 cash-1">From ৳ 15000</button>
+              </div>
+              <div class="bottom-right">
+                <button class="rounded p-1 btn btn-sm btn btn-sm heart-1">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <h5>Lorem ipsum dolor sit amet consectetur.</h5>
+              <div class="row">
+                <div class="col-md-8">
+                  <p>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    &nbsp;&nbsp; 635 Reviews <br />
+                    Sleeps 87 <br />
+                    <span class="label-card-text"
+                      >Arizona > Lake Havasu City</span
+                    >
+                  </p>
+                </div>
+                <div class="col-md-4">
+                  <button type="button" class="w-auto btn btn-view-more">
+                    View Details
+                  </button>
+                </div>
+              </div>
+              <p class="card-text">
+                <i class="fal fa-check"></i>
+                Air Conditionar &nbsp;&nbsp;
+                <i class="fal fa-check"></i>
+                Child Friendly
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="container-img">
+              <img
+                src="https://i.ibb.co/WWNpHYF/hotel-3.jpg"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="top-right">
+                <button class="rounded p-1 more-photo">
+                  More photo
+                  <img
+                    src="https://cdn-assets.bedroomvillas.com/vff/1.1.18-v2/images/external-link.svg"
+                    alt=""
+                    class="img-fluid img-2"
+                  />
+                </button>
+              </div>
+              <div class="bottom-left">
+                <button class="rounded p-1 cash-1">From ৳ 15000</button>
+              </div>
+              <div class="bottom-right">
+                <button class="rounded p-1 btn btn-sm btn btn-sm heart-1">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <h5>Lorem ipsum dolor sit amet consectetur.</h5>
+              <div class="row">
+                <div class="col-md-8">
+                  <p>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                    &nbsp;&nbsp; 635 Reviews <br />
+                    Sleeps 87 <br />
+                    <span class="label-card-text"
+                      >Arizona > Lake Havasu City</span
+                    >
+                  </p>
+                </div>
+                <div class="col-md-4">
+                  <button type="button" class="w-auto btn btn-view-more">
+                    View Details
+                  </button>
+                </div>
+              </div>
+              <p class="card-text">
+                <i class="fal fa-check"></i>
+                Air Conditionar &nbsp;&nbsp;
+                <i class="fal fa-check"></i>
+                Child Friendly
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="container-img">
+              <img
+                src="https://i.ibb.co/F5hWXyK/hotel-5.jpg"
+                class="card-img-top"
+                alt="..."
+              />
               <div class="top-right">
                 <button class="rounded p-1 more-photo">
                   More photo
@@ -693,7 +702,9 @@
         </div>
       </div>
     </div>
-
+    <script>
+      var hdpkr = new HotelDatepicker(document.getElementById("input-id"));
+    </script>
     <!-- Bootstrap -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

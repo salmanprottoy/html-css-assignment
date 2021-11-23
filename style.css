@@ -71,12 +71,12 @@
   left: 8%;
 }
 
+/* 
 .checkin {
   position: relative;
 }
 
 .checkin input {
-  /* height: 60px; */
   text-indent: 25px;
   border: 2px solid #ccc;
 }
@@ -89,6 +89,8 @@
 .fa-calendar-alt {
   color: #4db;
 }
+ */
+
 .btn-search {
   background-color: #f92;
   color: #fff;

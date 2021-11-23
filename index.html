@@ -32,7 +32,39 @@
       integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
       crossorigin="anonymous"
     />
+
     <link rel="stylesheet" href="style.css" />
+
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="/resources/demos/style.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <script>
+      
+      $(function () {
+        var $dp1 = $("#datepicker-checkin");
+        $dp1.datepicker({
+          minDate: new Date(),
+          format: "yyyy-mm-dd",
+          autoclose: true,
+          minViewMode: 1,
+          clearBtn: true,
+          enableOnReadonly: true,
+        });
+
+        console.log(document.getElementById("datepicker-chekin"));
+
+        var $dp2 = $("#datepicker-checkout");
+        $dp2.datepicker({
+          minDate: $("#datepicker-checkin").data("date"),
+          format: "yyyy-mm-dd",
+        });
+      });
+    </script>
 
     <title>BedroomVillas</title>
   </head>
@@ -70,11 +102,20 @@
         </div>
 
         <div class="checkin p-1">
-          <i class="far fa-calendar-alt"></i>
           <input
             type="text"
-            class="form-control rounded-0"
-            placeholder="Check In > Check Out"
+            class="rounded-0"
+            id="datepicker-checkin"
+            placeholder="Check In"
+          />
+        </div>
+
+        <div class="checkout p-1">
+          <input
+            type="text"
+            class="rounded-0"
+            id="datepicker-checkout"
+            placeholder="Check Out"
           />
         </div>
 

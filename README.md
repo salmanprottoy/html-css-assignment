@@ -7,6 +7,6 @@
 
 ## Preview
 
-![Preview](https://i.ibb.co/jvgdghx/screencapture-127-0-0-1-5500-index-html-2021-11-25-01-47-10.png)
+![Preview](https://i.ibb.co/BVqmqL7/screencapture-127-0-0-1-5500-index-html-2021-11-25-01-47-10.png)
 
 ---

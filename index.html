@@ -60,9 +60,6 @@
     ></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-input-spinner@3.1.7/src/bootstrap-input-spinner.min.js"></script>
-    <script>
-      $("input[type='number']").inputSpinner();
-    </script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
@@ -89,8 +86,7 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArTUpPxK58U3xCnOuoFYGMtLfce4S0Ok4&libraries=places&ccallback=initMap"
       async
     ></script>
-<!--     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArTUpPxK58U3xCnOuoFYGMtLfce4S0Ok4&libraries=places&callback=myMap"></script>
- -->
+
     <script src="./script.js"></script>
     <script src="./slider.js"></script>
 
@@ -121,7 +117,6 @@
         /></a>
 
         <div class="search p-1">
-          <!-- <i class="fa fa-search"></i> -->
           <i class="fas fa-search-location"></i>
           <input
             type="text"
@@ -145,121 +140,84 @@
           <button
             type="button"
             class="btn btn-outline dropdown-toggle"
-            role="button"
             aria-expanded="false"
+            role="button"
             data-bs-toggle="modal"
             data-bs-target="#guestsModal"
           >
             <i class="far fa-user-friends"></i>
             &nbsp; Guests &nbsp;
           </button>
-          <!-- <ul class="dropdown-menu">
-            <input type="number" value="0" min="0" />
-          </ul> -->
-          <div class="dropdown-menu">
+          <ul class="dropdown-menu">
             <li>
-              <a id="showprice" class="dropdown-item" href="#"></a>
+              <a id="showGuests" class="dropdown-item" href="#"></a>
             </li>
-
-            <!-- <div class="guests">
-              <div class="row p-1">
-                <div class="col-12">
-                  <div class="d-flex justify-content-between">
-                    <div>
-                      <p class="text-dark">Guests</p>
-                    </div>
-                    <div
-                      class="
-                        input-group
-                        w-auto
-                        justify-content-end
-                        align-items-center
-                      "
+          </ul>
+        </div>
+        <div
+          class="modal fade"
+          id="guestsModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  <span>Guests: </span>
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div
+                  class="
+                    parent
+                    container
+                    d-flex
+                    justify-content-center
+                    align-items-center
+                    h-100
+                  "
+                >
+                  <div class="child">
+                    <button
+                      class="btn btn-minus rounded-circle"
+                      style="font-size: large"
+                      onclick="decrement()"
                     >
-                      <input
-                        type="button"
-                        value="-"
-                        class="
-                          button-minus
-                          border
-                          rounded-circle
-                          icon-shape icon-sm
-                          mx-1
-                        "
-                        data-field="quantity"
-                      />
-                      <input
-                        type="number"
-                        step="1"
-                        max="10"
-                        value="1"
-                        name="quantity"
-                        class="quantity-field border-0 text-center w-25"
-                      />
-                      <input
-                        type="button"
-                        value="+"
-                        class="
-                          button-plus
-                          border
-                          rounded-circle
-                          icon-shape icon-sm
-                        "
-                        data-field="quantity"
-                      />
-                    </div>
+                      <i class="fal fa-minus-circle"></i>
+                    </button>
+                    <span
+                      id="updateGuestInfo"
+                      style="margin: 2em; font-size: large"
+                    >
+                      0
+                    </span>
+                    <button
+                      class="btn btn-minus rounded-circle"
+                      onclick="increment()"
+                    >
+                      <i class="fal fa-plus-circle"></i>
+                    </button>
                   </div>
                 </div>
               </div>
-            </div> -->
-            <!-- <div class="input-group inline-group">
-              <div class="input-group-prepend">
-                <button class="btn btn-outline-secondary btn-minus">
-                  <i class="fa fa-minus"></i>
-                </button>
-              </div>
-              <input
-                class="form-control quantity"
-                min="0"
-                name="quantity"
-                value="1"
-                type="number"
-              />
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary btn-plus">
-                  <i class="fa fa-plus"></i>
-                </button>
-              </div>
-            </div> -->
-          </div>
-          <div class="modal-body guestsModal">
-            <div
-              class="
-                parent
-                container
-                d-flex
-                justify-content-center
-                align-items-center
-                h-100
-              "
-            >
-              <div class="child">
+              <div class="modal-footer">
                 <button
-                  class="redondo"
-                  style="font-size: large"
-                  onclick="decrement()"
+                  type="button"
+                  data-bs-dismiss="modal"
+                  class="btn btn-primary"
+                  style="background-color: #f7941d"
+                  onclick="guestupdate()"
                 >
-                  -
+                  Apply
                 </button>
-
-                <span
-                  id="updateGuestInfo"
-                  style="margin: 2em; font-size: large"
-                >
-                  0
-                </span>
-
-                <button class="redondo" onclick="increment()">+</button>
               </div>
             </div>
           </div>
@@ -317,13 +275,6 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <!-- <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Close
-                </button> -->
                 <button
                   type="button"
                   data-bs-dismiss="modal"
@@ -941,46 +892,21 @@
         });
       });
 
-      
-
-      function incrementValue(e) {
-        e.preventDefault();
-        var fieldName = $(e.target).data("field");
-        var parent = $(e.target).closest("div");
-        var currentVal = parseInt(
-          parent.find("input[name=" + fieldName + "]").val(),
-          10
-        );
-
-        if (!isNaN(currentVal)) {
-          parent.find("input[name=" + fieldName + "]").val(currentVal + 1);
-        } else {
-          parent.find("input[name=" + fieldName + "]").val(0);
-        }
-      }
-
-      function decrementValue(e) {
-        e.preventDefault();
-        var fieldName = $(e.target).data("field");
-        var parent = $(e.target).closest("div");
-        var currentVal = parseInt(
-          parent.find("input[name=" + fieldName + "]").val(),
-          10
-        );
-
-        if (!isNaN(currentVal) && currentVal > 0) {
-          parent.find("input[name=" + fieldName + "]").val(currentVal - 1);
-        } else {
-          parent.find("input[name=" + fieldName + "]").val(0);
-        }
-      }
-
-      $(".input-group").on("click", ".button-plus", function (e) {
-        incrementValue(e);
-      });
-
-      $(".input-group").on("click", ".button-minus", function (e) {
-        decrementValue(e);
+      // Initialize and add the map
+      $(document).ready(function initMap() {
+        // The location of dhaka
+        const dhaka = { lat: 23.81575591787694, lng: 90.41176168642586 };
+        //23.81575591787694, 90.41176168642586
+        // The map, centered at dhaka
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 8,
+          center: dhaka,
+        });
+        // The marker, positioned at dhaka
+        const marker = new google.maps.Marker({
+          position: dhaka,
+          map: map,
+        });
       });
     </script>
   </body>

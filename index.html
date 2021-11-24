@@ -4,16 +4,19 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <!-- Font Awesome -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
       rel="stylesheet"
     />
+
     <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
       rel="stylesheet"
     />
+
     <!-- Bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -21,11 +24,7 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <link
-      href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
+
     <link
       rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -33,19 +32,67 @@
       crossorigin="anonymous"
     />
 
-    <link rel="stylesheet" href="style.css" />
-
     <link
       rel="stylesheet"
       href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css"
     />
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/hotel-datepicker@4.0.2/dist/css/hotel-datepicker.css"
     />
+
+    <link
+      href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="stylesheet" href="slider.css" />
+
+    <!-- Bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-input-spinner@3.1.7/src/bootstrap-input-spinner.min.js"></script>
+    <script>
+      $("input[type='number']").inputSpinner();
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script
+      src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js"
+      type="text/javascript"
+    ></script>
+
+    <script
+      src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"
+      integrity="sha256-xH4q8N0pEzrZMaRmd7gQVcTZiFei+HfRTBPJ1OGXC0k="
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/fecha@4.2.1/lib/fecha.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hotel-datepicker@4.0.2/dist/js/hotel-datepicker.min.js"></script>
-    <script type="text/javascript" src="./script.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"
+      integrity="sha512-nnzkI2u2Dy6HMnzMIkh7CPd1KX445z38XIu4jG1jGw7x5tSL3VBjE44dY4ihMU1ijAQV930SPM12cCFrB18sVw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArTUpPxK58U3xCnOuoFYGMtLfce4S0Ok4&libraries=places&ccallback=initMap"
+      async
+    ></script>
+<!--     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArTUpPxK58U3xCnOuoFYGMtLfce4S0Ok4&libraries=places&callback=myMap"></script>
+ -->
+    <script src="./script.js"></script>
+    <script src="./slider.js"></script>
 
     <title>BedroomVillas</title>
   </head>
@@ -74,11 +121,13 @@
         /></a>
 
         <div class="search p-1">
-          <i class="fa fa-search"></i>
+          <!-- <i class="fa fa-search"></i> -->
+          <i class="fas fa-search-location"></i>
           <input
             type="text"
+            id="searchInput"
             class="form-control rounded-0"
-            placeholder="Arizona, USA"
+            placeholder="Search location"
           />
         </div>
 
@@ -96,29 +145,196 @@
           <button
             type="button"
             class="btn btn-outline dropdown-toggle"
-            data-bs-toggle="dropdown"
+            role="button"
             aria-expanded="false"
+            data-bs-toggle="modal"
+            data-bs-target="#guestsModal"
           >
             <i class="far fa-user-friends"></i>
-            Guests
+            &nbsp; Guests &nbsp;
           </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#"></a></li>
-          </ul>
+          <!-- <ul class="dropdown-menu">
+            <input type="number" value="0" min="0" />
+          </ul> -->
+          <div class="dropdown-menu">
+            <li>
+              <a id="showprice" class="dropdown-item" href="#"></a>
+            </li>
+
+            <!-- <div class="guests">
+              <div class="row p-1">
+                <div class="col-12">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <p class="text-dark">Guests</p>
+                    </div>
+                    <div
+                      class="
+                        input-group
+                        w-auto
+                        justify-content-end
+                        align-items-center
+                      "
+                    >
+                      <input
+                        type="button"
+                        value="-"
+                        class="
+                          button-minus
+                          border
+                          rounded-circle
+                          icon-shape icon-sm
+                          mx-1
+                        "
+                        data-field="quantity"
+                      />
+                      <input
+                        type="number"
+                        step="1"
+                        max="10"
+                        value="1"
+                        name="quantity"
+                        class="quantity-field border-0 text-center w-25"
+                      />
+                      <input
+                        type="button"
+                        value="+"
+                        class="
+                          button-plus
+                          border
+                          rounded-circle
+                          icon-shape icon-sm
+                        "
+                        data-field="quantity"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+            <!-- <div class="input-group inline-group">
+              <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary btn-minus">
+                  <i class="fa fa-minus"></i>
+                </button>
+              </div>
+              <input
+                class="form-control quantity"
+                min="0"
+                name="quantity"
+                value="1"
+                type="number"
+              />
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary btn-plus">
+                  <i class="fa fa-plus"></i>
+                </button>
+              </div>
+            </div> -->
+          </div>
+          <div class="modal-body guestsModal">
+            <div
+              class="
+                parent
+                container
+                d-flex
+                justify-content-center
+                align-items-center
+                h-100
+              "
+            >
+              <div class="child">
+                <button
+                  class="redondo"
+                  style="font-size: large"
+                  onclick="decrement()"
+                >
+                  -
+                </button>
+
+                <span
+                  id="updateGuestInfo"
+                  style="margin: 2em; font-size: large"
+                >
+                  0
+                </span>
+
+                <button class="redondo" onclick="increment()">+</button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="btn-group border p-1 price-range-area">
           <button
             type="button"
             class="btn btn-outline dropdown-toggle"
-            data-bs-toggle="dropdown"
             aria-expanded="false"
+            role="button"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
           >
-            Price Range
+            &nbsp; Price Range &nbsp;
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#"></a></li>
+            <li>
+              <a id="showprice" class="dropdown-item" href="#"></a>
+            </li>
           </ul>
+        </div>
+
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  <span>Price Range: </span>
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="price-range-slider">
+                  <p class="range-value">
+                    <input
+                      style="display: flex; justify-content: center"
+                      type="text"
+                      id="amount"
+                      readonly
+                    />
+                  </p>
+                  <div id="slider-range" class="range-bar"></div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <!-- <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button> -->
+                <button
+                  type="button"
+                  data-bs-dismiss="modal"
+                  class="btn btn btn-apply"
+                  onclick="rangeprice()"
+                >
+                  Apply
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="p-1 search-area">
@@ -702,19 +918,70 @@
         </div>
       </div>
     </div>
+
+    <div id="map"></div>
+
+    <!-- Hotel Date Picker -->
+
     <script>
       var hdpkr = new HotelDatepicker(document.getElementById("input-id"));
+      console.log(hdpkr);
+      var placesearch = "searchInput";
+
+      $(document).ready(function () {
+        var acomplete = new google.maps.places.Autocomplete(
+          document.getElementById(placesearch),
+          {
+            types: ["geocode"],
+          }
+        );
+
+        google.maps.event.addListener(acomplete, "searchInput", function () {
+          var near_place = acomplete.getplace();
+        });
+      });
+
+      
+
+      function incrementValue(e) {
+        e.preventDefault();
+        var fieldName = $(e.target).data("field");
+        var parent = $(e.target).closest("div");
+        var currentVal = parseInt(
+          parent.find("input[name=" + fieldName + "]").val(),
+          10
+        );
+
+        if (!isNaN(currentVal)) {
+          parent.find("input[name=" + fieldName + "]").val(currentVal + 1);
+        } else {
+          parent.find("input[name=" + fieldName + "]").val(0);
+        }
+      }
+
+      function decrementValue(e) {
+        e.preventDefault();
+        var fieldName = $(e.target).data("field");
+        var parent = $(e.target).closest("div");
+        var currentVal = parseInt(
+          parent.find("input[name=" + fieldName + "]").val(),
+          10
+        );
+
+        if (!isNaN(currentVal) && currentVal > 0) {
+          parent.find("input[name=" + fieldName + "]").val(currentVal - 1);
+        } else {
+          parent.find("input[name=" + fieldName + "]").val(0);
+        }
+      }
+
+      $(".input-group").on("click", ".button-plus", function (e) {
+        incrementValue(e);
+      });
+
+      $(".input-group").on("click", ".button-minus", function (e) {
+        decrementValue(e);
+      });
     </script>
-    <!-- Bootstrap -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script
-      src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js"
-      type="text/javascript"
-    ></script>
   </body>
 </html>

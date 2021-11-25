@@ -1,9 +1,18 @@
-# BedroomVilla
+# Bedroom Villa
 
 ---
 ## Live site
 
 [BedroomVilla](https://salmanprottoy.github.io/html-css-assignment/)
+
+## Features 
+
+- #### Autocomplete google place API using 3 character
+
+- #### Price range slider
+
+- #### Guest counter
+
 
 ## Preview
 

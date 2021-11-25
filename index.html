@@ -933,9 +933,9 @@
       };
 
       mapButton.onclick = function initMap() {
-        map = new google.maps.Map(document.getElementById("map"), {
-          center: new google.maps.LatLng(-33.91722, 151.23064),
-          zoom: 16,
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 7,
+          center: { lat: 24.070608162275988, lng: 90.35564253680592 }, //24.070608162275988, 90.35564253680592
         });
 
         showContent.style.display = "none";
@@ -943,130 +943,37 @@
         listButtonArea.style.display = "block";
         showMap.style.display = "block";
 
-        const iconBase =
-          "https://developers.google.com/maps/documentation/javascript/examples/full/images/";
-        const icons = {
-          parking: {
-            icon: iconBase + "parking_lot_maps.png",
-          },
-          library: {
-            icon: iconBase + "library_maps.png",
-          },
-          info: {
-            icon: iconBase + "info-i_maps.png",
-          },
-        };
-        const features = [
-          {
-            position: new google.maps.LatLng(-33.91721, 151.2263),
-            type: "info",
-          },
-          {
-            position: new google.maps.LatLng(-33.91539, 151.2282),
-            type: "info",
-          },
-          {
-            position: new google.maps.LatLng(-33.91747, 151.22912),
-            type: "info",
-          },
-          {
-            position: new google.maps.LatLng(-33.9191, 151.22907),
-            type: "info",
-          },
-          {
-            position: new google.maps.LatLng(-33.91725, 151.23011),
-            type: "info",
-          },
-          {
-            position: new google.maps.LatLng(-33.91872, 151.23089),
-            type: "info",
-          },
-          {
-            position: new google.maps.LatLng(-33.91784, 151.23094),
-            type: "info",
-          },
-          {
-            position: new google.maps.LatLng(-33.91682, 151.23149),
-            type: "info",
-          },
-          {
-            position: new google.maps.LatLng(-33.9179, 151.23463),
-            type: "info",
-          },
-          {
-            position: new google.maps.LatLng(-33.91666, 151.23468),
-            type: "info",
-          },
-          {
-            position: new google.maps.LatLng(-33.916988, 151.23364),
-            type: "info",
-          },
-          {
-            position: new google.maps.LatLng(
-              -33.91662347903106,
-              151.22879464019775
-            ),
-            type: "parking",
-          },
-          {
-            position: new google.maps.LatLng(
-              -33.916365282092855,
-              151.22937399734496
-            ),
-            type: "parking",
-          },
-          {
-            position: new google.maps.LatLng(
-              -33.91665018901448,
-              151.2282474695587
-            ),
-            type: "parking",
-          },
-          {
-            position: new google.maps.LatLng(
-              -33.919543720969806,
-              151.23112279762267
-            ),
-            type: "parking",
-          },
-          {
-            position: new google.maps.LatLng(
-              -33.91608037421864,
-              151.23288232673644
-            ),
-            type: "parking",
-          },
-          {
-            position: new google.maps.LatLng(
-              -33.91851096391805,
-              151.2344058214569
-            ),
-            type: "parking",
-          },
-          {
-            position: new google.maps.LatLng(
-              -33.91818154739766,
-              151.2346203981781
-            ),
-            type: "parking",
-          },
-          {
-            position: new google.maps.LatLng(
-              -33.91727341958453,
-              151.23348314155578
-            ),
-            type: "library",
-          },
+        // Set LatLng and title text for the markers. The first marker (Boynton Pass)
+        // receives the initial focus when tab is pressed. Use arrow keys to
+        // move between markers; press tab again to cycle through the map controls.
+        const tourStops = [
+          [{ lat: 23.809865510450535, lng: 90.41869203307982 }, "৳15000"], //23.809865510450535, 90.41869203307982
+          [{ lat: 22.48888755283844, lng: 91.8223739009424 }, "৳25000"], //22.48888755283844, 91.8223739009424
+          [{ lat: 25.04212004667261, lng: 91.86352612895453 }, "৳8000"], //25.04212004667261, 91.86352612895453
+          [{ lat: 21.55040177071811, lng: 91.96229147618365 }, "৳35000"], //21.55040177071811, 91.96229147618365
+          [{ lat: 24.466613132550695, lng: 88.57134788798324 }, "৳5000"], //24.466613132550695, 88.57134788798324
         ];
 
-        // Create markers.
-        for (let i = 0; i < features.length; i++) {
+        // Create an info window to share between markers.
+        const infoWindow = new google.maps.InfoWindow();
+
+        // Create the markers.
+        tourStops.forEach(([position, title], i) => {
           const marker = new google.maps.Marker({
-            position: features[i].position,
-            icon: icons[features[i].type].icon,
-            map: map,
+            position,
+            map,
+            title: `${title}`,
+            label: `${i + 1}`,
+            optimized: false,
           });
-        }
+
+          // Add a click listener for each marker, and set up the info window.
+          marker.addListener("click", () => {
+            infoWindow.close();
+            infoWindow.setContent(marker.getTitle());
+            infoWindow.open(marker.getMap(), marker);
+          });
+        });
       };
     </script>
   </body>

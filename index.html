@@ -293,9 +293,53 @@
             <button
               type="button"
               class="form-control w-auto btn btn-search rounded-0"
+              data-bs-toggle="modal"
+              data-bs-target="#finalModal"
+              onclick="showSearchData()"
             >
               Search
             </button>
+          </div>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="finalModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Search Result
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <p>Search: <span id="placeSearchValue"></span></p>
+                  <p>Check In: <span id="checkInValue"></span></p>
+                  <p>Check Out: <span id="checkOutValue"></span></p>
+                  <p>Guests: <span id="guestsValue"></span></p>
+                  <p>Price Range: <span id="priceRangeValue"></span></p>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="p-1 filter-area">
@@ -912,6 +956,34 @@
         });
       });
 
+      /*  if (document.getElementById("searchInput").value != null) {
+        let data = document.getElementById("searchInput").value;
+        console.log(data.length + 1);
+      }
+      if (data.length + 2 == 3) {
+        $(document).ready(function () {
+          var acomplete = new google.maps.places.Autocomplete(
+            document.getElementById(searchInput),
+            {
+              types: ["geocode"],
+            }
+          );
+          if (data.length + 2 == 3) {
+            google.maps.event.addListener(
+              acomplete,
+              "searchInput",
+              function () {
+                var near_place = acomplete.getplace();
+              }
+            );
+          }
+
+          google.maps.event.addListener(acomplete, "searchInput", function () {
+            var near_place = acomplete.getplace();
+          });
+        });
+      } */
+
       let showContent = document.getElementById("showContent");
       let showMap = document.getElementById("showMap");
       showMap.style.display = "none";
@@ -975,6 +1047,20 @@
           });
         });
       };
+
+      function showSearchData() {
+        let checkInValue = hdpkr.getValue().slice(0, 10);
+        let checkOutValue = hdpkr.getValue().slice(13);
+        let seachLocationValue = document.getElementById("searchInput").value;
+        document.getElementById("placeSearchValue").innerHTML =
+          seachLocationValue;
+        document.getElementById("checkInValue").innerHTML = checkInValue;
+        document.getElementById("checkOutValue").innerHTML = checkOutValue;
+        document.getElementById("guestsValue").innerHTML =
+          document.getElementById("updateGuestInfo").innerText;
+        document.getElementById("priceRangeValue").innerHTML =
+          document.getElementById("amount").value;
+      }
     </script>
   </body>
 </html>

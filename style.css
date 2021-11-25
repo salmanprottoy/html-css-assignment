@@ -202,9 +202,9 @@
   width: 2rem;
   height: 2rem;
 }
+
 #map {
-  height: 400px;
-  width: 100%;
+  height: 100vh;
 }
 .fa-minus-circle,
 .fa-plus-circle {

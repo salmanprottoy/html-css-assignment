@@ -941,7 +941,7 @@
     <script>
       var hdpkr = new HotelDatepicker(document.getElementById("input-id"));
 
-      var placesearch = "searchInput";
+      /* var placesearch = "searchInput";
 
       $(document).ready(function () {
         var acomplete = new google.maps.places.Autocomplete(
@@ -954,35 +954,32 @@
         google.maps.event.addListener(acomplete, "searchInput", function () {
           var near_place = acomplete.getplace();
         });
-      });
+      }); */
 
-      /*  if (document.getElementById("searchInput").value != null) {
-        let data = document.getElementById("searchInput").value;
-        console.log(data.length + 1);
-      }
-      if (data.length + 2 == 3) {
-        $(document).ready(function () {
-          var acomplete = new google.maps.places.Autocomplete(
-            document.getElementById(searchInput),
-            {
-              types: ["geocode"],
-            }
-          );
-          if (data.length + 2 == 3) {
-            google.maps.event.addListener(
-              acomplete,
-              "searchInput",
-              function () {
-                var near_place = acomplete.getplace();
+      document.getElementById("searchInput").onkeydown = function place() {
+        if (document.getElementById("searchInput").value != null) {
+          let val = document.getElementById("searchInput").value;
+          if (val.length + 2 == 3) {
+            $(document).ready(function () {
+              var acomplete = new google.maps.places.Autocomplete(
+                document.getElementById("searchInput"),
+                {
+                  types: ["geocode"],
+                }
+              );
+              if (val.length + 2 == 3) {
+                google.maps.event.addListener(
+                  acomplete,
+                  "place_changed",
+                  function () {
+                    var near_place = acomplete.getplace();
+                  }
+                );
               }
-            );
+            });
           }
-
-          google.maps.event.addListener(acomplete, "searchInput", function () {
-            var near_place = acomplete.getplace();
-          });
-        });
-      } */
+        }
+      };
 
       let showContent = document.getElementById("showContent");
       let showMap = document.getElementById("showMap");
